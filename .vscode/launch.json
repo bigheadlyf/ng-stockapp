@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [{
+        "name": "Launch localhost with sourcemaps",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:4200/",
+        "sourceMaps": true,
+        "webRoot": "${workspaceRoot}",
+        "trace": "verbose",
+        "sourceMapPathOverrides": {
+            //"webpack:///C:/wamp/www/ngstockapp/*": "${webRoot}/*"
+            "webpack:///*": "${workspaceRoot}/*"
+        }
+    }],
+    "compounds": []
+}
