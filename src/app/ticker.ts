@@ -6,7 +6,7 @@ export class Ticker {
   ) {  }
 
   update(data, symbol){
-    console.log(data)
+    //console.log(data)
     if(data.code == this.symbol){
       this.lastprice = data.price;
     }

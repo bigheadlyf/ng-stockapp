@@ -10,11 +10,11 @@ import { DataService } from './data.service';
 @Component({
     selector: 'app-root',
     templateUrl: './ticker.component.html',
-    providers: [DataService]
+    providers: []
 })
 export class TickerComponent implements OnInit {
     //records: Record[] = [];
-    tickers = [];
+    ticker;
     lastUpdateTime: string;
 
     constructor(
@@ -27,12 +27,9 @@ export class TickerComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe((params: Params) => { 
-            let symbols = params["symbols"].split(',');
-            for(var i = 0; i<symbols.length;i++){
-                let tk = new Ticker(symbols[i], "");
-                this.tickers.push(tk);
-                this.dataService.subscribe(tk);
-            }
+            let symbol = params["symbol"];
+                this.ticker= new Ticker(symbol, "");
+                this.dataService.subscribe(this.ticker);
         });
     }
 

@@ -8,13 +8,23 @@ export class DataService {
   tickers = [];
 
   constructor(private jsonp: Jsonp) {
-    this.timer = window.setInterval(()=>{
+    this.timer = window.setInterval(() => {
       this.getData();
-    }, 10000);
-   }
+    }, 3000);
+  }
 
-  subscribe(tk: Ticker) {
-    this.tickers.push(tk);
+  subscribe(ticker: Ticker) {
+    if (!this.checkTicker(ticker)) 
+      this.tickers.push(ticker);
+  }
+
+  private checkTicker(ticker: Ticker) {
+    for (let tk of this.tickers) {
+      if (tk.symbol == ticker.symbol) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private publish(data, symbol) {

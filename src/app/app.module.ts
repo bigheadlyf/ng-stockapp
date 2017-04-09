@@ -4,24 +4,29 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
+import { DataService } from './data.service';
+
 import { HomeComponent } from './home.component';
 import { TickerComponent } from './ticker.component';
+import { DashboardComponent } from './dashboard.component';
 
 const appRoutes: Routes = [
   { path: 'ticker', component: TickerComponent },
-  { path: 'ticker/:symbols', component: TickerComponent },
+  { path: 'ticker/:symbol', component: TickerComponent },
+  { path: 'dashboard/:symbols', component: DashboardComponent },
   { path: '',
-    redirectTo: '/ticker',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
     //data: { title: 'Heroes List' }
   },
-  //{ path: '**', component: PageNotFoundComponent }
+  { path: '**', component: DashboardComponent }
 ];
 
 @NgModule({
   declarations: [
     TickerComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -30,7 +35,7 @@ const appRoutes: Routes = [
     HttpModule,
     JsonpModule
   ],
-  providers: [],
+  providers: [DataService],  //singleton service
   bootstrap: [HomeComponent]
 })
 export class AppModule { }
