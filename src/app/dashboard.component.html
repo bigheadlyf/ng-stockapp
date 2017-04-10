@@ -3,7 +3,7 @@
         <div *ngFor="let t of tickers" class="row">
             <div class="col-xs-2"><a [routerLink]="['/ticker/', t.symbol]">{{t.symbol}}</a></div>
             <div class="col-xs-8">{{t.lastprice}}</div>
-            <div class="col-xs-2"></div>
+            <div class="col-xs-2"><img src="{{t.img}}" /></div>
         </div>
     </div>
 </div>

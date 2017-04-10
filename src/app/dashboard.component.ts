@@ -24,6 +24,9 @@ export class DashboardComponent implements OnInit {
       let symbols = params["symbols"].split(',');
       for (var i = 0; i < symbols.length; i++) {
         let tk = new Ticker(symbols[i], "");
+        tk.onUpdateHandler((data) => {
+          //data
+        })
         this.tickers.push(tk);
         this.dataService.subscribe(tk);
       }
