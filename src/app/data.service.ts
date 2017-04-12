@@ -34,6 +34,9 @@ export class DataService {
   }
 
   private getData() {
+    if(this.tickers.length == 0){
+      return;
+    }
     let tks = [];
     for (let tk of this.tickers) {
       tks.push(tk.symbol);

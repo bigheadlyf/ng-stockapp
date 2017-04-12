@@ -14,12 +14,11 @@ const appRoutes: Routes = [
   { path: 'ticker', component: TickerComponent },
   { path: 'ticker/:symbol', component: TickerComponent },
   { path: 'dashboard/:symbols', component: DashboardComponent },
-  { path: '',
-    redirectTo: '/dashboard',
+  {
+    path: '**', 
+    redirectTo: 'dashboard/0600213,1000803',
     pathMatch: 'full',
-    //data: { title: 'Heroes List' }
-  },
-  { path: '**', component: DashboardComponent }
+  }
 ];
 
 @NgModule({
